@@ -1,7 +1,16 @@
-body,h1 {font-family: "Raleway", sans-serif}
+body,h1 {font-family: "Raleway", sans-serif; color: black}
 body, html {height: 100%}
+.custom-text {
+    color: white
+}
+.red-text {
+    color: red
+}
+img {
+    border: 5px solid rgb(150, 0, 0);
+  }
 .bgimg {
-    background-image: url('forestbridge.jpg');
+    background-image: url('Caterpillar_4.JPG');
     min-height: 100%;
     background-position: center;
     background-size: cover;
