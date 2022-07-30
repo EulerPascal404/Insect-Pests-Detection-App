@@ -6,8 +6,6 @@ from torchvision.transforms.functional import InterpolationMode
 import numpy as np
 from PIL import Image
 
-
-
 def transforms_validation(image):
     crop_size=224
     resize_size=256
