@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Image Classification</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" type="text/css" href="../static/style.css">
+<style>
+    
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+    <div class="w3-display-topleft w3-padding-large w3-xlarge">
+      Iowa State University
+    </div>
+    <div class="w3-display-middle">
+      <h1 class="w3-jumbo w3-animate-top">Insect Classifier</h1>
+      <hr class="w3-border-grey" style="margin:auto;width:40%">
+      <p class="w3-large w3-center">Upload any photo of an insect, or try this <a href = "static\insect_1.jpg" target="_blank">one</a></p>
+      <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <div class="w3-display-bottom">          
+            <input type="file" class="form-control custom-file-upload text-center" placeholder="" name="my_image" id="pwd">
+          </div>
+        </div>
+    
+        <div class="form-group col-sm-15">        
+          <div class="text-center">
+            <button type="submit" class="btn btn-success ">Submit</button>
+          </div>
+        </div>
+      </form>
+      {% if prediction %}
+      <img src="{{img_path}}" height="200px" width="200px" class="center">
+      <h2><b> Prediction  : <i> {{prediction}} </i></b></h2>
+    
+      {% endif %}
+    </div>
+  
+    <div class="w3-display-bottomleft w3-padding-large">
+      Insect Classifier
+    </div>
+  </div>
+</body>
+</html>
