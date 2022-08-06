@@ -86,7 +86,7 @@ def evaluate(model,image):
             output = model(image)
             op = torch.nn.functional.softmax(output)
             op= torch.argmax(op)
-            return common_classes[op]
+            return classes[op]
 
 
 if __name__ == "__main__":
