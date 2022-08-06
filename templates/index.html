@@ -12,41 +12,63 @@
 <style>
     
   </style>
+  <script>
+    function showPred() {  
+      console.log('222'); 
+      setTimeout(() => {
+        console.log('111');
+        //document.write('ok'); 
+        document.getElementById("predArea").style.visibility = 'visible'; 
+      }, 4500);
+    }
+    
+  </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
   <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-    <div class="w3-display-topleft w3-padding-large w3-xlarge custom-text">
+    <div style="" class="w3-display-topleft w3-padding-large w3-xlarge custom-text">
       <b>Iowa State University</b>
     </div>
+    <div class="w3-display-topright">
+      <img style="max-width:150px; height:auto;" src="../static/logo.jfif">
+    </div>
     <div class="w3-display-middle">
-      <h1 class="w3-jumbo w3-animate-top custom-text"><b>Insect Classifier</b></h1>
+      <h1 style="" class="w3-jumbo w3-animate-top custom-text"><b>Insect Classifier</b></h1>
       <hr class="w3-border-grey" style="margin:auto;width:40%">
-      <p class="w3-large w3-center custom-text"><b>Upload any photo of an insect, or try this <a href = "static\insect_1.jpg" target="_blank">one</a></b></p>
+      <p style="" class="w3-large w3-center custom-text"><b>Upload any photo of an insect, or try this <a href = "static\insect_1.jpg" target="_blank">one</a></b></p>
       <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
           <div class="w3-display-bottom">          
-            <input type="file" class="form-control custom-file-upload text-center" placeholder="" name="my_image" id="pwd">
+            <input style="max-width: 400px; margin: auto; height: auto; text-align: center;" type="file" class="form-control custom-file-upload text-center" placeholder="" name="my_image" id="pwd">
           </div>
         </div>
     
         <div class="form-group col-sm-15">        
           <div class="text-center">
-            <button type="submit" class="btn btn-success ">Submit</button>
+            <button type="submit" class="btn btn-success ">Get Prediction</button>
           </div>
         </div>
       </form>
-      {% if prediction %}
-      <img src="{{img_path}}" height="200px" width="200px" class="center">
-      <h2><b> Prediction  : <i> {{prediction}} </i></b></h2>
-    
-      {% endif %}
+      <!-- <div class="scan"> 
+        <img src="../static/Apis_mellifera_Western_honey_bee.jpg" height="200px" width="200px" class="center">
+      </div> -->
+      
+        {% if prediction %}
+        <div class="scan" id = "pred"> 
+          <img src="{{img_path}}" height="200px" width="200px" class="center"  onload="showPred()">
+        </div>
+        <div style="visibility: hidden;" id = "predArea">
+          <h2 style="margin: auto;"><b> Prediction  : <i> {{prediction}} </i></b></h2>
+        </div>
+      
+        {% endif %}
     </div>
   
-    <div class="w3-display-bottomleft w3-padding-large custom-text">
+    <div style="" class="w3-display-bottomleft w3-padding-large custom-text">
       <b>Insect & pests detection app</b>
     </div>
   </div>

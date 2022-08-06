@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 model=torchvision.models.regnet_y_32gf()
 
-weights=torch.load('insect_model.pth',map_location=torch.device('cpu'))['model']
+weights=torch.load('insect_model.pth',map_location=torch.device('cpu'))
 model.fc=torch.nn.Linear(3712,142)
 model.load_state_dict(weights,strict=True)
 torch.backends.cudnn.benchmark = False
@@ -21,10 +21,11 @@ torch.backends.cudnn.deterministic = True
 model.eval()
 
 
-def  get_prediction(PATH_TO_IMAGE):
-	image = cv2.imread(PATH_TO_IMAGE)
-	result = evaluate(model,image)
-	return result     
+def get_prediction(PATH_TO_IMAGE):
+    image=cv2.imread(PATH_TO_IMAGE)
+    image=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
+    result=evaluate(model,image)
+    return result   
 
 # routes
 @app.route("/", methods=['GET', 'POST'])
@@ -69,18 +70,23 @@ def evaluate(model,image):
     device=torch.device('cpu')
     image=transforms_validation(image)
     file=open('classes.txt','r')
+    common_file=open('common_names.txt', 'r')
     classes=[]
+    common_classes = []
     content=file.readlines()
+    common_content = common_file.readlines()
     for i in content:
         spl=i.split('\n')[0]
         classes.append(spl)
-    
+    for i in common_content:
+        spl=i.split('\n')[0]
+        common_classes.append(spl)
     with torch.inference_mode():
             image = image.to(device, non_blocking=True)
             output = model(image)
             op = torch.nn.functional.softmax(output)
             op= torch.argmax(op)
-            return classes[op]
+            return common_classes[op]
 
 
 if __name__ == "__main__":

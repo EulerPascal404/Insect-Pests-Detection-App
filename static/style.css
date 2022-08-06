@@ -10,10 +10,20 @@ img {
     border: 5px solid rgb(150, 0, 0);
   }
 .bgimg {
-    background-image: url('Caterpillar_4.JPG');
+    background-image: url('Millets field image.jpeg');
     min-height: 100%;
     background-position: center;
     background-size: cover;
+}
+.userinput {
+    background-image: url('Apis_mellifera_Western_honey_bee.jpg');
+    height:"200px";
+    width:"200px";
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
 }
 .text-center {
     text-align: center;
@@ -32,7 +42,96 @@ img {
 
 .center {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     width: 50%;
   }
+#pred {
+    display: block;
+    margin-left: 220px;
+    width: 50%;
+}
+.scan { 
+
+    width: 200px;
+    height: auto;
+
+    text-align: center; 
+
+    padding: 6px 2px; 
+
+    position: relative; 
+
+    left: 0; 
+
+    right: 0; 
+
+    top: 0%; 
+
+    margin: auto; 
+
+    border: dashed .25em rgb(90, 85, 85); 
+
+    transform: translate(-50%); 
+} 
+
+  
+.scan::after { 
+
+    content: ''; 
+
+    background: rgb(23, 162, 74); 
+
+    width: 0.25em; 
+
+    height: auto; 
+
+    display: block; 
+
+    position: absolute; 
+
+    top: 0; 
+
+    right: 0; 
+
+    left: 0; 
+
+    bottom: 0; 
+
+    margin: auto; 
+
+    opacity: 20; 
+
+    z-index: 2; 
+
+    animation: 2s infinite ease-in-out roll; 
+    animation-iteration-count: 2;
+} 
+  
+.scan img { 
+
+    width: 180px; 
+    height: auto; 
+
+} 
+
+  
+@keyframes roll { 
+
+    0% { 
+
+        transform: translateX(-50px); 
+
+    } 
+
+    50% { 
+
+        transform: translateX(50px); 
+
+    } 
+
+    100% { 
+
+        transform: translateX(-50px); 
+
+    } 
+}
